@@ -49,11 +49,15 @@ pipeline {
 		                echo "Removing old Folder"
                         rm "${czdaptools}" -r
 						git clone ${githubRepo}
+					else
+						cd ${czdaptools}
+						git pull
+						cd ..
                     fi                                                            
+					
                     cd ${czdaptools}
                     
-                    git branch ${gitBranch}
-                    git pull
+                    git branch ${gitBranch}                    
 		          '''
                   }
             }            
