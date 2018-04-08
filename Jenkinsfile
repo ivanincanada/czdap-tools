@@ -54,7 +54,7 @@ pipeline {
 						rm ${czdap-tools} -r
 						git clone ${githubRepo}		
 						cd ${czdap-tools}
-						
+						git branh ${gitBranch}
 						cd ..
                     fi                                                            
                                        
