@@ -77,7 +77,7 @@ pipeline {
                 {
               
                         sh '''
-                        cd ${zonedataDir}
+                        cd ${zonedataDir}						
 		                echo ${configJsonData} >> config.json
 		                python download.py &
 		                sleep 1
@@ -93,6 +93,7 @@ pipeline {
                 {
                 sh '''
                     cd ${zonedataDir}
+					cd zonefiles
                     for f in *.gz; do
                     do
                     zcat ${f} >> file.tmp
