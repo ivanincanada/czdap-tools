@@ -50,12 +50,15 @@ pipeline {
 						git pull		                						
 						cd ..
 					else						
-						git clone ${githubRepo}						
+						git clone ${githubRepo}		
+						cd ${czdap-tools}
+						git branch ${gitBranch} 
+						cd ..
                     fi                                                            
 					
                     cd ${czdaptools}
                     
-                    git branch ${gitBranch}                    
+                                       
 		          '''
                   }
             }            
