@@ -46,13 +46,11 @@ pipeline {
             steps {
 		          sh '''
 		            if [ -d "${czdaptools}" ]; then
-		                echo "Removing old Folder"
-                        rm "${czdaptools}" -r
-						git clone ${githubRepo}
-					else
 						cd ${czdaptools}
-						git pull
+						git pull		                						
 						cd ..
+					else						
+						git clone ${githubRepo}						
                     fi                                                            
 					
                     cd ${czdaptools}
