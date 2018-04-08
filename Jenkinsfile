@@ -47,14 +47,14 @@ pipeline {
 		          sh '''
 		            if [ -d "${czdaptools}" ]; then
 						cd ${czdaptools}
-						
+						git branch ${gitBranch}
 						git pull		                						
 						cd ..
 					else		
-						rm ${czdap-tools} -r
+						
 						git clone ${githubRepo}		
 						cd ${czdap-tools}
-						git branh ${gitBranch}
+						git branch ${gitBranch}
 						cd ..
                     fi                                                            
                                        
