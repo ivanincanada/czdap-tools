@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    agent 
+        {
+        node 
+            {
+            label 'GoogleWorker'
+            }
+        }
 	 environment {
         czdaptools = 'czdap-tools'
         githubRepo    = 'https://github.com/wsad-io/czdap-tools.git'
