@@ -1,5 +1,5 @@
 pipeline {
-    agent 'GoogleWorker'
+    agent GoogleWorker
 
     stages {
         stage('Decrypt Credentials') {
