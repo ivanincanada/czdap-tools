@@ -48,10 +48,8 @@ pipeline {
 		            if [ -d "${czdaptools}" ]; then
 		                echo "Removing old Folder"
                         rm "${czdaptools}" -r
-                    fi
-                    
-                    git clone ${githubRepo}
-                    
+						git clone ${githubRepo}
+                    fi                                                            
                     cd ${czdaptools}
                     
                     git branch ${gitBranch}
@@ -93,9 +91,9 @@ pipeline {
                 {
                 sh '''
                     cd ${zonedataDir}
-                    for f in *.txt.gz
+                    for f in *.gz; do
                     do
-                    zcat $f >> file.tmp
+                    zcat ${f} >> file.tmp
                     mysql -u ${SQLUser} -h $SQLHost -p${SQLPass} -e "use ${SQLDB}" -e "
                     LOAD DATA LOCAL INFILE 'file.tmp'
                     INTO TABLE zonedata
