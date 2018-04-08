@@ -47,6 +47,7 @@ pipeline {
 		          sh '''
 		            if [ -d "${czdaptools}" ]; then
 						cd ${czdaptools}
+						git branch ${gitBranch} 
 						git pull		                						
 						cd ..
 					else						
