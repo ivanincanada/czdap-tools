@@ -44,7 +44,7 @@ except:
   sys.stderr.write("Unable to parse JSON returned from CZDAP.\n")
   exit(1)
 
-skip = 1
+skip = 0
 # Grab each file.
 for url in urls:
   r = s.get(config['base_url'] + url)
