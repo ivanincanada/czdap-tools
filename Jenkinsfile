@@ -2,19 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Decrypt Credentials') {
             steps {
-                echo 'Building..'
+                cd credentials-decrypt
+		py decrypt.py
+		cd ..
             }
         }
-        stage('Test') {
+        stage('Refresh ZoneData') {
             steps {
-                echo 'Testing..'
+                cd zonedata-download
+		py download.py
             }
         }
-        stage('Deploy') {
+        stage('Check ZoneFiles') {
             steps {
-                echo 'Deploying....'
+                ls zonefiles -l -s -S -h
             }
         }
     }
