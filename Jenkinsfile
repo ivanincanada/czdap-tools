@@ -1,28 +1,58 @@
 pipeline {
-    agent GoogleWorker
-
-    stages {
-        stage('Decrypt Credentials') {
+    agent any
+    stages 
+        {
+        stage('Clone Repo') 
+            {
             steps {
-		sh '''
-                cd credentials-decrypt
-		py decrypt.py
-		cd ..
-		'''
-            }
-        }
-        stage('Refresh ZoneData') {
+		          sh '''
+		            if [ -d "${czdaptools}" ]; then
+		                echo "Removing old Folder"
+                        rm "${czdaptools}" -r
+                    fi
+                    
+                    git clone ${githubRepo}
+                    
+                    cd ${czdaptools}
+                    
+                    git branch ${gitBranch}
+                    git pull
+		          '''
+                  }
+            }            
+        stage('Decrypt Credentials') 
+            {
             steps {
-		sh '''
-                cd zonedata-download
-		py download.py
-		'''
+		          sh '''
+                    cd ${credentialsDir}
+                    echo ${configJsonData} >> config.json
+                    cp test/czdap.private.key ./czdap.private.key
+		            python ${credentialsScript}
+		            cd ..
+		          '''
+                  }
             }
-        }
-        stage('Check ZoneFiles') {
-            steps {
-                ls zonefiles -l -s -S -h
+        stage('Refresh ZoneData') 
+            {
+            steps 
+                {
+		        sh '''
+                    cd ${zonedataDir}
+                    echo ${configJsonData} >> config.json
+		            python download.py
+		            cd ..
+		        '''
+                }
             }
+        stage('Check ZoneFiles') 
+            {
+            steps 
+                {
+                sh '''
+                    cd ${zonedataDir}
+                    ls zonefiles -l -s -S -h
+                '''
+                }
         }
     }
 }
