@@ -6,7 +6,7 @@ import json
 import sys
 from urlparse import urlparse
 import os
-import mysql.connector
+
 # Create a session
 s = requests.Session()
 
