@@ -46,6 +46,7 @@ pipeline {
             steps {
 		          sh '''
 			  git clean -f
+			  rm -rf ${czdaptools}
 		            if [ -d "${czdaptools}" ]; then
 						cd ${czdaptools}
 						# git branch ${gitBranch}
