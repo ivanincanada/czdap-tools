@@ -57,7 +57,7 @@ pipeline {
 						# git branch ${gitBranch}
 						
                     fi                                                            
-                  git branch ${gitBranch}
+                  #git branch ${gitBranch}
 		          '''
                   }
             }            
