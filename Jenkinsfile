@@ -7,7 +7,7 @@ pipeline {
             }
         }
 	 environment {
-        czdaptools = 'czdap-tools'
+        czdaptools = "czdap-tools"
         githubRepo    = 'https://github.com/wsad-io/czdap-tools.git'
 		credentialsDir = 'czdap-tools/credentials-decrypt'
 		credentialsScript = 'decrypt.py'
