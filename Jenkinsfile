@@ -95,9 +95,8 @@ pipeline {
                 {
                 sh '''
                     cd ${zonedataDir}
-					cd zonefiles
-                    for f in *.gz; do
-                    do
+		    cd zonefiles
+                    for f in *.gz; do                    
                     zcat ${f} >> file.tmp
                     mysql -u ${SQLUser} -h $SQLHost -p${SQLPass} -e "use ${SQLDB}" -e "
                     LOAD DATA LOCAL INFILE 'file.tmp'
