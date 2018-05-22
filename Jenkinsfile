@@ -49,7 +49,7 @@ pipeline {
 		            if [ -d "${czdaptools}" ]; then
 						cd ${czdaptools}
 						# git branch ${gitBranch}
-						git pull origin ${gitBranch}		                						
+						git pull 
 						
 					else		
 						
