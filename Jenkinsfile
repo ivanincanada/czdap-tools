@@ -46,20 +46,19 @@ pipeline {
             steps {
 		          sh '''
 			  git clean -f
-			  rm -rf ${czdaptools}
+			  
 		            if [ -d "${czdaptools}" ]; then
-						cd ${czdaptools}
+						cd czdap-tools
 						# git branch ${gitBranch}
 						git pull 
 						
 					else		
 						
 						git clone ${githubRepo}		
-						cd ${czdap-tools}
+						cd czdap-tools
 						# git branch ${gitBranch}
 						
-                    fi                                                            
-                 #git branch ${gitBranch}
+                    fi                                                                           
 		          '''
                   }
             }            
