@@ -3,7 +3,7 @@ pipeline {
         {
         node 
             {
-            label 'GoogleWorker'
+            label 'aws-rancher-worker'
             }
         }
 	 environment {
