@@ -18,7 +18,7 @@ pipeline {
 		SQLUser = 'root'
 		SQLPass = 'Og;cKh[+Jf|/A/?j'
 		SQLDB = 'zonedata'
-		DEPENDENCIES = 'curl nano git python3 mysql-client python-crypto python-requests'
+		DEPENDENCIES = 'curl nano git python3 mariadb-client python-crypto python-requests'
     }
       stages 
         {
