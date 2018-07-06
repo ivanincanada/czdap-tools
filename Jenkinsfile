@@ -1,7 +1,10 @@
 pipeline {
 	agent 
         {
-        any
+        node 
+            {
+            any
+            }
         }
 	environment {
         czdaptools = "czdap-tools"
