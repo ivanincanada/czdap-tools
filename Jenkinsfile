@@ -1,24 +1,25 @@
 pipeline {
-    agent 
+	agent 
         {
         node 
             {
-            label 'GoogleWorker'
+            label 'JenkinsFileBuilder'
             }
         }
-	 environment {
-        czdaptools = 'czdap-tools'
+	environment {
+        czdaptools = "czdap-tools"
         githubRepo    = 'https://github.com/wsad-io/czdap-tools.git'
 		credentialsDir = 'czdap-tools/credentials-decrypt'
 		credentialsScript = 'decrypt.py'
 		gitBranch = 'wsadPipeline'
 		configJsonData = '{   "base_url": "https://czdap.icann.org",   "token": "XmoPgREwsSrpSoCt9WUsSRptrrRXGeHA" }'
 		zonedataDir = 'czdap-tools/zonedata-download'
-		SQLHost = '35.196.142.233'
-		SQLUser = 'dbadmin'
-		SQLPass = '3212333222355321233322321'
+		SQLHost = '54.235.44.134'
+		SQLUser = 'publicaccess'
+		SQLPass = 'e[x3xq0_Caefs[K%'
 		SQLDB = 'zonedata'
-		DEPENDENCIES = 'curl nano git python3 mysql-client python-crypto python-requests'
+		SQLPort = '9998'
+		DEPENDENCIES = 'curl nano git python3 mariadb-client python-crypto python-requests'
     }
       stages 
         {
@@ -37,7 +38,7 @@ pipeline {
             steps 
                 {
                 sh '''
-                    mysql -u ${SQLUser} -h ${SQLHost} -p${SQLPass} -e "exit"
+                    mysql -u ${SQLUser} -h ${SQLHost} -p${SQLPass} -P ${SQLPort} -e "exit"
                 '''
                 }
         }
@@ -45,19 +46,20 @@ pipeline {
             {
             steps {
 		          sh '''
+			  git clean -f
+			  
 		            if [ -d "${czdaptools}" ]; then
-						cd ${czdaptools}
+						cd czdap-tools
 						# git branch ${gitBranch}
-						git pull		                						
+						git pull 
 						
 					else		
 						
 						git clone ${githubRepo}		
-						cd ${czdap-tools}
+						cd czdap-tools
 						# git branch ${gitBranch}
 						
-                    fi                                                            
-                  git branch ${gitBranch}
+                    fi                                                                           
 		          '''
                   }
             }            
@@ -95,9 +97,8 @@ pipeline {
                 {
                 sh '''
                     cd ${zonedataDir}
-					cd zonefiles
-                    for f in *.gz; do
-                    do
+		    cd zonefiles
+                    for f in *.gz; do                    
                     zcat ${f} >> file.tmp
                     mysql -u ${SQLUser} -h $SQLHost -p${SQLPass} -e "use ${SQLDB}" -e "
                     LOAD DATA LOCAL INFILE 'file.tmp'
