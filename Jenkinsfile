@@ -3,7 +3,7 @@ pipeline {
         {
         node 
             {
-            label 'aws-rancher-worker'
+            label 'any'
             }
         }
 	 environment {
