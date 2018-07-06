@@ -18,6 +18,7 @@ pipeline {
 		SQLUser = 'root'
 		SQLPass = 'Og;cKh[+Jf|/A/?j'
 		SQLDB = 'zonedata'
+		SQLPort = '9998'
 		DEPENDENCIES = 'curl nano git python3 mariadb-client python-crypto python-requests'
     }
       stages 
@@ -28,7 +29,6 @@ pipeline {
                 {
                 sh '''
                     sudo apt-get update
-		    sudo apt-get remove mysql-client
                     sudo apt-get install ${DEPENDENCIES} -y
                 '''
                 }
@@ -38,7 +38,7 @@ pipeline {
             steps 
                 {
                 sh '''
-                    mysql -u ${SQLUser} -h ${SQLHost} -p${SQLPass} -e "exit"
+                    mysql -u ${SQLUser} -h ${SQLHost} -p${SQLPass} -P ${SQLPort} -e "exit"
                 '''
                 }
         }
