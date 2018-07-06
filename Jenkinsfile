@@ -3,7 +3,7 @@ pipeline {
         {
         node 
             {
-            any
+            label 'JenkinsFileBuilder'
             }
         }
 	environment {
