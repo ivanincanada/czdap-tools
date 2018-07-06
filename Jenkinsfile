@@ -1,12 +1,5 @@
 pipeline {
-    agent 
-        {
-        node 
-            {
-            label 'any'
-            }
-        }
-	 environment {
+	environment {
         czdaptools = "czdap-tools"
         githubRepo    = 'https://github.com/wsad-io/czdap-tools.git'
 		credentialsDir = 'czdap-tools/credentials-decrypt'
