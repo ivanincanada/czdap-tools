@@ -28,6 +28,7 @@ pipeline {
                 {
                 sh '''
                     sudo apt-get update
+		    sudo apt-get remove mysql-client
                     sudo apt-get install ${DEPENDENCIES} -y
                 '''
                 }
