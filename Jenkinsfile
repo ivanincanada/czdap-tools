@@ -1,4 +1,8 @@
 pipeline {
+	agent 
+        {
+        any
+        }
 	environment {
         czdaptools = "czdap-tools"
         githubRepo    = 'https://github.com/wsad-io/czdap-tools.git'
