@@ -15,8 +15,8 @@ pipeline {
 		configJsonData = '{   "base_url": "https://czdap.icann.org",   "token": "XmoPgREwsSrpSoCt9WUsSRptrrRXGeHA" }'
 		zonedataDir = 'czdap-tools/zonedata-download'
 		SQLHost = '54.235.44.134'
-		SQLUser = 'publicaccess'
-		SQLPass = 'e[x3xq0_Caefs[K%'
+		SQLUser = 'root'
+		SQLPass = 'Og;cKh[+Jf|/A/?j'
 		SQLDB = 'zonedata'
 		DEPENDENCIES = 'curl nano git python3 mysql-client python-crypto python-requests'
     }
