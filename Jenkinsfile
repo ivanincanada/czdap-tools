@@ -14,9 +14,9 @@ pipeline {
 		gitBranch = 'wsadPipeline'
 		configJsonData = '{   "base_url": "https://czdap.icann.org",   "token": "XmoPgREwsSrpSoCt9WUsSRptrrRXGeHA" }'
 		zonedataDir = 'czdap-tools/zonedata-download'
-		SQLHost = '35.196.142.233'
-		SQLUser = 'dbadmin'
-		SQLPass = '3212333222355321233322321'
+		SQLHost = '54.235.44.134'
+		SQLUser = 'publicaccess'
+		SQLPass = 'e[x3xq0_Caefs[K%'
 		SQLDB = 'zonedata'
 		DEPENDENCIES = 'curl nano git python3 mysql-client python-crypto python-requests'
     }
