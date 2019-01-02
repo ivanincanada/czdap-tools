@@ -14,11 +14,11 @@ pipeline {
 		gitBranch = 'wsadPipeline'
 		configJsonData = '{   "base_url": "https://czdap.icann.org",   "token": "XmoPgREwsSrpSoCt9WUsSRptrrRXGeHA" }'
 		zonedataDir = 'czdap-tools/zonedata-download'
-		SQLHost = '54.235.44.134'
-		SQLUser = 'publicaccess'
-		SQLPass = 'e[x3xq0_Caefs[K%'
-		SQLDB = 'zonedata'
-		SQLPort = '9998'
+		SQLHost = '51.15.217.75'
+		SQLUser = 'monty'
+		SQLPass = 'some_pass'
+		SQLDB = 'czdap'
+		SQLPort = '3306'
 		DEPENDENCIES = 'curl nano git python3 mariadb-client python-crypto python-requests'
     }
       stages 
@@ -28,8 +28,8 @@ pipeline {
             steps 
                 {
                 sh '''
-                    sudo apt-get update
-                    sudo apt-get install ${DEPENDENCIES} -y
+                    apt-get update
+                    apt-get install ${DEPENDENCIES} -y
                 '''
                 }
         }
