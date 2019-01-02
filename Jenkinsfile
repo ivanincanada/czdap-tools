@@ -30,7 +30,7 @@ pipeline {
                 {
                 sh '''
                     apt-get update
-                    apt-get install ${DEPENDENCIES} -y
+                   # apt-get install ${DEPENDENCIES} -y
                 '''
                 }
         }
