@@ -19,6 +19,7 @@ pipeline {
 		SQLPass = 'some_pass'
 		SQLDB = 'czdap'
 		SQLPort = '3306'
+		zonedata = 'zonedata_master'
 		DEPENDENCIES = 'curl nano git python3 mariadb-client python-crypto python-requests'
     }
       stages 
@@ -102,7 +103,7 @@ pipeline {
                     zcat ${f} >> file.tmp
                     mysql -u ${SQLUser} -h $SQLHost -p${SQLPass} -e "use ${SQLDB}" -e "
                     LOAD DATA LOCAL INFILE 'file.tmp'
-                    INTO TABLE zonedata
+                    INTO TABLE ${zonedata}
                     FIELDS TERMINATED BY '\t'
                     LINES TERMINATED BY '\n'
                     IGNORE 0 LINES
