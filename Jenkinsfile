@@ -29,7 +29,7 @@ pipeline {
             steps 
                 {
                 sh '''
-                    apt-get update
+                   # apt-get update
                     # apt-get install ${DEPENDENCIES} -y
                 '''
                 }
